@@ -15,8 +15,12 @@ namespace ReadJson
 
         static void Main(string[] args)
         {
-            
-        }
+            foreach (string line in System.IO.File.ReadLines(@"C:\Users\wally\Desktop\Url\EstructurasLAB\Lab2_Walter_Villatoro\bin\Debug\netcoreapp3.1\input_challenge_lab_2.jsonl"))
+            {
+
+                InputLab input = JsonSerializer.Deserialize<InputLab>(line);
+
+            }
     }
 
 
