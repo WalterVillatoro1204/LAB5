@@ -67,6 +67,118 @@ namespace ReadJson
                     Console.Write("\n");
 
                 }
+                else if (input.input2.typeBuilder == "Houses")
+                {
+                    foreach (var itemHouses in input.input1)
+                    {
+                        if (itemHouses.builds.Houses != null)
+                        {
+                            foreach (var item1Houses in itemHouses.builds.Houses)
+                            {
+                                if (input.input2.minDanger == "Red")
+                                {
+                                    if (item1Houses.price < input.input2.budget)
+                                    {
+                                        sortHouses.Add(item1Houses.id, item1Houses.price);
+                                    }
+                                    else { }
+                                }
+                                else if (input.input2.minDanger == "Orange")
+                                {
+                                    if (item1Houses.zoneDangerous == "Red")
+                                    {
+                                        if (item1Houses.price < input.input2.budget)
+                                        {
+                                            sortHouses.Add(item1Houses.id, item1Houses.price);
+                                        }
+                                        else { }
+                                    }
+                                    else if (item1Houses.zoneDangerous == "Orange")
+                                    {
+                                        if (item1Houses.price < input.input2.budget)
+                                        {
+                                            sortHouses.Add(item1Houses.id, item1Houses.price);
+                                        }
+                                        else { }
+                                    }
+                                }
+                                else if (input.input2.minDanger == "Yellow")
+                                {
+                                    if (item1Houses.zoneDangerous == "Red")
+                                    {
+                                        if (item1Houses.price < input.input2.budget)
+                                        {
+                                            sortHouses.Add(item1Houses.id, item1Houses.price);
+                                        }
+                                        else { }
+                                    }
+                                    else if (item1Houses.zoneDangerous == "Orange")
+                                    {
+                                        if (item1Houses.price < input.input2.budget)
+                                        {
+                                            sortHouses.Add(item1Houses.id, item1Houses.price);
+                                        }
+                                        else { }
+                                    }
+                                    else if (item1Houses.zoneDangerous == "Yellow")
+                                    {
+                                        if (item1Houses.price < input.input2.budget)
+                                        {
+                                            sortHouses.Add(item1Houses.id, item1Houses.price);
+                                        }
+                                        else { }
+                                    }
+                                }
+                                else if (input.input2.minDanger == "Green")
+                                {
+                                    if (item1Houses.zoneDangerous == "Red")
+                                    {
+                                        if (item1Houses.price < input.input2.budget)
+                                        {
+                                            sortHouses.Add(item1Houses.id, item1Houses.price);
+                                        }
+                                        else { }
+                                    }
+                                    else if (item1Houses.zoneDangerous == "Orange")
+                                    {
+                                        if (item1Houses.price < input.input2.budget)
+                                        {
+                                            sortHouses.Add(item1Houses.id, item1Houses.price);
+                                        }
+                                        else { }
+                                    }
+                                    else if (item1Houses.zoneDangerous == "Yellow")
+                                    {
+                                        if (item1Houses.price < input.input2.budget)
+                                        {
+                                            sortHouses.Add(item1Houses.id, item1Houses.price);
+                                        }
+                                        else { }
+                                    }
+                                    else if (item1Houses.zoneDangerous == "Green")
+                                    {
+                                        if (item1Houses.price < input.input2.budget)
+                                        {
+                                            sortHouses.Add(item1Houses.id, item1Houses.price);
+                                        }
+                                        else { }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+
+                    var itemsOrdenadosHouses = from pair in sortHouses orderby pair.Value ascending select pair;
+
+                    foreach (var itemSortedHouses in itemsOrdenadosHouses)
+                    {
+                        Console.Write("[ " + itemSortedHouses.Key + " ]" + ",");
+                    }
+
+                    Console.Write("\n");
+
+                }
 
             }
     }
