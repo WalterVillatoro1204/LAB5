@@ -27,6 +27,47 @@ namespace ReadJson
                 Dictionary<string, double> sortHouses = new Dictionary<string, double>();
                 Dictionary<string, double> sortPremises = new Dictionary<string, double>();
 
+                if (input.input2.typeBuilder == "Apartments")
+                {
+                    foreach (var itemApartments in input.input1)
+                    {
+                        if (itemApartments.builds.Apartments != null)
+                        {
+                            foreach (var item1Apartments in itemApartments.builds.Apartments)
+                            {
+                                if (input.input2.wannaPetFriendly == item1Apartments.isPetFriendly)
+                                {
+                                    if (input.input2.wannaPetFriendly == true) //desea mascota
+                                    {
+                                        if (item1Apartments.price < input.input2.budget)
+                                        {
+                                            sortApartments.Add(item1Apartments.id, item1Apartments.price);
+                                        }
+                                        else { }
+                                    }
+                                    else  //no desea mascota
+                                    {
+                                        if (item1Apartments.price < input.input2.budget)
+                                        {
+                                            sortApartments.Add(item1Apartments.id, item1Apartments.price);
+                                        }
+                                        else { }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    var itemsApartments = from pair in sortApartments orderby pair.Value ascending select pair;
+
+                    foreach (var itemSorted in itemsApartments)
+                    {
+                        Console.Write("[ " + itemSorted.Key + " ]" + ",");
+                    }
+                    Console.Write("\n");
+
+                }
+
             }
     }
 
