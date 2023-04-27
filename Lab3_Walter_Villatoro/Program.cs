@@ -16,69 +16,51 @@ namespace Lab3_Walter_Villatoro
     {
         static void Main(string[] args)
         {
-            foreach (string line in System.IO.File.ReadLines(@"C:\Users\wally\Desktop\Lab3_Walter_Villatoro\bin\Debug\netcoreapp3.1\input_auctions_example_lab_3.jsonl"))
+            List<User> Usuario = new List<User>();
+            Acciones Actions;
+            string direccion = "";
+            string direccion2 = "";
+            using (StreamReader leer = new StreamReader(direccion))
             {
-
-                Json input = JsonSerializer.Deserialize<Json>Convert.ToString((line));
-
+                while (!leer.EndOfStream)
+                {
+                    string linea = leer.ReadLine();
+                    User persona = new User();
+                    persona = JsonConvert.DeserializeObject<User>(linea);
+                    Usuario.Add(persona);
+                }
             }
+ 
+
         }
     }
 
-    public partial class Json
+    public class User
     {
-        [JsonProperty("property")]
-        public string Property { get; set; }
-
-        [JsonProperty("customers")]
-        public Customer[] Customers { get; set; }
-
-        [JsonProperty("rejection")]
-        public long Rejection { get; set; }
-    }
-
-    public partial class Customer
-    {
-        [JsonProperty("dpi")]
-        public long Dpi { get; set; }
-
-        [JsonProperty("budget")]
-        public long Budget { get; set; }
-
-        [JsonProperty("date")]
-        public DateTimeOffset Date { get; set; }
-    }
-
-    public partial class Json1
-    {
-        public static Json1 FromJson(string json) => JsonConvert.DeserializeObject<Json1>(json, Lab3_Walter_Villatoro.Converter.Settings);
-    }
-
-    public class InputLab
-    {
-        public Json[] input1 { get; set; }
-        public Customer input2 { get; set; }
+        public long DPI { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string Job { get; set; }
+        public string PlaceJob { get; set; }
+        public int Salary { get; set; }
     }
 
 
-
-    public static class Serialize
+    public class Customer
     {
-        public static string ToJson(this Json1 self) => JsonConvert.SerializeObject(self, Lab3_Walter_Villatoro.Converter.Settings);
+        public long DPI { get; set; }
+        public int Budget { get; set; }
+        public DateTime Date { get; set; }
     }
 
-    internal static class Converter
+    public class Acciones
     {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
+        public string? Property { get; set; }
+        public List<Customer>? Customers { get; set; }
+        public int Rejection { get; set; }
     }
+    
 }
 
 
