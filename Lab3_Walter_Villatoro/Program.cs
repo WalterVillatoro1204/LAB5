@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using Newtonsoft.Json.Linq;
-
-using System.Globalization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.IO;
+using System.Runtime.CompilerServices;
+using static Lab3_Walter_Villatoro.Program;
+using System.Collections.Generic;
+using System.Collections;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Lab3_Walter_Villatoro
 {
