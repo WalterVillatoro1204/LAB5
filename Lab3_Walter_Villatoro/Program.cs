@@ -33,7 +33,7 @@ namespace Lab3_Walter_Villatoro
                     Usuario.Add(persona);
                 }
             }
-            //deserializar los datos de la direccion2
+
             using (StreamReader leer = new StreamReader(path1))
             {
                 string linea = leer.ReadToEnd();
@@ -76,7 +76,34 @@ namespace Lab3_Walter_Villatoro
             long Ganador = DPI[Actions.Rejection];
             int budgetGanador = default;
             DateTime FechaGanador = new DateTime();
+            foreach (var item in Actions.Customers)
+            {
+                if (Ganador == item.dpi)
+                {
+                    budgetGanador = item.budget;
+                    FechaGanador = item.date;
+                    break;
+                }
+            }
+            foreach (var item in Usuario)
+            {
+                if (Ganador == item.DPI)
+                {
 
+                    //nuevo
+                    using (var sha256 = SHA512.Create())
+                    {
+                        byte[] hash = sha256.ComputeHash(UTF8Encoding.UTF8.GetBytes(item.FirstName));
+                        Console.WriteLine("{" + "\"dpi\":" + item.DPI + ",\"budget\":" + budgetGanador + ",\"date\":" + "\"" + FechaGanador + "\",\"firstName\":\"" + item.FirstName + "\",\"lastName:\"" + item.LastName + "\",\"birthDate\":\"" + item.BirthDate + "\",\"job\":\"" + item.Job + "\",\"placeJob\":\"" + item.PlaceJob + "\",\"salary\":" + item.Salary + ",\"property\":\"" + Actions.Property + "\",\"signature\":\"" + Convert.ToBase64String(hash) + "\"}");
+                        break;
+
+                    }
+                
+                }
+
+            }
+
+            Console.ReadKey();
 
 
 
