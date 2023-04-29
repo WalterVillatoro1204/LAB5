@@ -16,10 +16,12 @@ namespace Lab3_Walter_Villatoro
     {
         static void Main(string[] args)
         {
+            
             List<User> Usuario = new List<User>();
             Acciones Actions;
-            string direccion = "";
-            string direccion2 = "";
+
+            string direccion = "C:\\Users\\wally\\Desktop\\LAB5\\Lab3_Walter_Villatoro\\bin\\Debug\\netcoreapp3.1\\input_customer_challenge_lab_3.jsonl";
+            string direccion2 = "C:\\Users\\wally\\Desktop\\LAB5\\Lab3_Walter_Villatoro\\bin\\Debug\\netcoreapp3.1\\Costumer.JSONL";
             using (StreamReader leer = new StreamReader(direccion))
             {
                 while (!leer.EndOfStream)
